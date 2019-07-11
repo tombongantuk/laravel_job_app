@@ -33,6 +33,9 @@ class User extends Authenticatable
     public function jobs(){
         return $this->belongsToMany('App\Job','user_job');
     }
+    public function userDetail(){
+        return $this->hasOne('App\UserDetail');
+    }
 
     /** 
      * @param string|array $roles 

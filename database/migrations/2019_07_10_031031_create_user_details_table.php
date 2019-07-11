@@ -19,6 +19,7 @@ class CreateUserDetailsTable extends Migration
             $table->integer('no_ktp');
             $table->text('alamat');
             $table->string('pendidikan');
+            $table->text('skill');
             $table->integer('no_hp');
             $table->timestamps();
         });

@@ -22,7 +22,7 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
 });
 Route::group(['middleware' => ['auth','role:user']], function () { 
     Route::get('user-ds','User\UserDashController@index')->name('user-home');
-    //Route::resource('user','UserController);
+    Route::resource('user-pr','User\UserProfileController');
 });
 
 

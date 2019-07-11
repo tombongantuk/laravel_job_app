@@ -18,7 +18,6 @@
     {{-- main content --}}
     <main role="main" class="container">
         <br>
-        <br>
         @yield('content')
     </main>
 

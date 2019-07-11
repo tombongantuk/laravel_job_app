@@ -14,11 +14,10 @@ class CreateUserJobTable extends Migration
     public function up()
     {
         Schema::create('user_job', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('job_id')->unsigned();
             $table->timestamps();
-
-            $table->primary('user_id','job_id');
         });
     }
 

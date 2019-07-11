@@ -17,6 +17,8 @@ class CreateJobsTable extends Migration
             $table->increments('id');
             $table->string('job_name');
             $table->text('details');
+            $table->text('requirement');
+            $table->integer('salary');
             $table->timestamps();
         });
     }

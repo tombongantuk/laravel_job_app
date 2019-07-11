@@ -22,9 +22,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $request->user()->authorizeRoles(['admin', 'user']);
-        
+    {   
         if ($request->user()->hasRole('admin')){
             return redirect()->route('admin-home');
         } 

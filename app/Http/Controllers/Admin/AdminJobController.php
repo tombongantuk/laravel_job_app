@@ -15,7 +15,8 @@ class AdminJobController extends Controller
      */
     public function index()
     {
-        return view('admin.jobindex');
+        $jobs=Job::all();
+        return view('admin.jobindex',compact('jobs'));
     }
 
     /**
@@ -25,7 +26,7 @@ class AdminJobController extends Controller
      */
     public function create()
     {
-        return view('admin.createjob');
+        return view('admin.create_job_detail');
     }
 
     /**
@@ -36,13 +37,13 @@ class AdminJobController extends Controller
      */
     public function store(Request $request)
     {
-        $data=[
-            'job_name'=>$request->jobname,
-            'details'=>$request->details
-        ];
-        $data=Job::create($data);
-        Session::flash('success','Job info created');
-        return redirect()->route('admin-jb.index');
+        // $data=[
+        //     'job_name'=>$request->jobname,
+        //     'details'=>$request->details
+        // ];
+        // $data=Job::create($data);
+        // Session::flash('success','Job info created');
+        // return redirect()->route('admin-jb.index');
         
     }
 
@@ -67,7 +68,7 @@ class AdminJobController extends Controller
     public function edit($id)
     {
         $job=Job::findOrFail($id);
-        return view('admin.editjob')->with('admin',$job);
+        return view('admin.edit_job_detail',compact('job'));
     }
 
     /**
@@ -80,9 +81,11 @@ class AdminJobController extends Controller
     public function update(Request $request, $id)
     {
         $job=Job::findOrFail($id);
-        $job->job_name=$request->job_name;
-        $job->details=$request->details;
-        $job->update();
+        $job=Job::update($request-all());
+        //$job->update()->$request->all();
+        // $job->job_name=$request->job_name;
+        // $job->details=$request->details;
+        // $job->update();
         
         Session::flash('success','job info updated');
         return redirect()->route('admin-jb.index');
