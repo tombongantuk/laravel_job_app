@@ -16,9 +16,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','email','DoB','password',
+        'name','email','password',
+        'ktp','alamat','pendidikan','skill','hobi','no_hp'
     ];
 
+    // protected $guarded=[
+    //       'ktp','alamat','pendidikan','skill','hobi','no_hp'];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -31,7 +34,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
     public function jobs(){
-        return $this->belongsToMany('App\Job','user_job');
+        return $this->belongsToMany('App\Job','user_job')->withPivot('status');
     }
     public function userDetail(){
         return $this->hasOne('App\UserDetail');

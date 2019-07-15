@@ -18,11 +18,19 @@ Route::group(['middleware' => ['auth','role:admin,user']], function () {
  });
 Route::group(['middleware' => ['auth','role:admin']], function () { 
     Route::get('admin-ds','Admin\AdminDashController@index')->name('admin-home');
-    //Route::resource('admin-jb','Admin\AdminJobController);
+    Route::get('admin_update_status','Admin\AdminController@kelola')->name('admin-us');
+    Route::get('admin_update_status/{id}','Admin\AdminController@lihatProfile')->name('admin-user-profile');
+    Route::get('admin_update_job_status/{id}','Admin\AdminController@lihatStatus')->name('admin-job-status');
+    Route::resource('admin-jb','Admin\AdminJobController');
 });
 Route::group(['middleware' => ['auth','role:user']], function () { 
     Route::get('user-ds','User\UserDashController@index')->name('user-home');
     Route::resource('user-pr','User\UserProfileController');
+    //route for show job list to apply
+    Route::get('user-jb','User\UserController@listJob')->name('user-job');
+    Route::get('user-jb/{id}','User\UserController@toApply')->name('user-jb');
+    Route::post('user-jb/{id}','User\UserController@applyJob')->name('user-jba');
+    Route::get('user-jb/{id}','User\UserController@jobStatus')->name('user-jbs');
 });
 
 

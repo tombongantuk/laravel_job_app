@@ -1,84 +1,41 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Job;
+use App\User;
+use Auth;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function applyJob($id){
+        //attach many to many user and job
+        $job_apply=Job::findOrFail($id);
+        $user_apply=User::findOrFail(Auth::user()->id);
+        //$job_apply->users()->attach($user_apply);
+        $user_apply->jobs()->attach($job_apply);
+
+        return redirect()->route('user-job');
+    }
+    public function listJob(){
+        //display about job 
+        $jobs=Job::all();
+        return view('user.job_list_apply',compact('jobs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function toApply($id){
+        $job=Job::findOrFail($id);
+        return view('user.job_to_apply',compact('job'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    
+    //function for user job status
+    public function jobStatus($id){
+        $user=User::findOrFail($id);
+        $job_status=$user->jobs()->get();
+        //$job_status->jobs()->get();
+        //dd($job_status);
+        return view('user.user_job_status',compact('job_status'));
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Job;
 use Session;
 
@@ -37,14 +38,9 @@ class AdminJobController extends Controller
      */
     public function store(Request $request)
     {
-        // $data=[
-        //     'job_name'=>$request->jobname,
-        //     'details'=>$request->details
-        // ];
-        // $data=Job::create($data);
-        // Session::flash('success','Job info created');
-        // return redirect()->route('admin-jb.index');
-        
+        $detail=Job::create($request->all());
+        Session::flash('success','Your Profile success stored');
+        return redirect()->route('admin-jb.index'); 
     }
 
     /**
@@ -56,7 +52,7 @@ class AdminJobController extends Controller
     public function show($id)
     {
         $job=Job::findOrFail($id);
-        return view('admin.showjob',$id);
+        return view('admin.show_job',compact('job'));
     }
 
     /**
@@ -80,8 +76,7 @@ class AdminJobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $job=Job::findOrFail($id);
-        $job=Job::update($request-all());
+        $job=Job::findOrFail($id)->update($request->all());
         //$job->update()->$request->all();
         // $job->job_name=$request->job_name;
         // $job->details=$request->details;

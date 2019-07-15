@@ -5,7 +5,7 @@
 @section('content')
     <h1>Job Detail</h1>
     <div class="container">
-        <form class="form-horizontal"action="{{route('admin-jb.store')}}"method=""role="">
+        <form class="form-horizontal"action="{{route('admin-jb.store')}}"method="post"role="form">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="title">Nama Pekerjaan</label>
@@ -13,11 +13,11 @@
             </div>
             <div class="form-group">
                 <label for="title">Detail Pekerjaan</label>
-                <input type="text" class="form-control"name="details"id="details"autofocus="true">
+                <textarea class="form-control"name="details" id="details" cols="5" rows="5"></textarea>
             </div>
             <div class="form-group">
                 <label for="title">Syarat Pekerjaan</label>
-                <input type="text" class="form-control"name="requirement"id="requirement"autofocus="true">
+                <textarea class="form-control"name="requirement" id="requirement" cols="5" rows="5"></textarea>
             </div>
             <div class="form-group">
                 <label for="title">Gaji</label>
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <a href="{{route('admin-jb.index')}}"class="btn btn-primary">Back</a>
-                <input type="submit" class="btn bn-primary"value="Save">
+                <input type="submit" class="btn btn-primary"value="Save">
             </div>
         </form>
     </div>
