@@ -19,12 +19,13 @@ class UserController extends Controller
 
         return redirect()->route('user-job');
     }
+    //function show list job
     public function listJob(){
         //display about job 
         $jobs=Job::all();
         return view('user.job_list_apply',compact('jobs'));
     }
-
+    //function to apply job
     public function toApply($id){
         $job=Job::findOrFail($id);
         return view('user.job_to_apply',compact('job'));

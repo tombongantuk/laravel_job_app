@@ -33,10 +33,13 @@
             <label for="email">Hobi</label>
             <input type="text"class="form-group"name="hobi"id="hobi"value="{{$user->userdetail->hobi}}">
         </div>
-            <div>
-                <label for="email">No HP</label>
-                <input type="text"class="form-group"name="no_hp"id="no_hp"value="{{$user->userdetail->no_hp}}">
-            </div>
+        <div>
+            <label for="email">No HP</label>
+            <input type="text"class="form-group"name="no_hp"id="no_hp"value="{{$user->userdetail->no_hp}}">
+        </div>
+        <div>
+            <a href="{{asset($user->filecv->file)}}" download="{{$user->filecv->file}}"class="btn btn-primary">download CV</a>
+        </div>
     </form>
     <div class="row">
     <a href="{{route('admin-us')}}">Back</a>

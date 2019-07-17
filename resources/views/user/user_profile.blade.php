@@ -8,7 +8,7 @@
             <h1>Hello {{Auth::user()->name}}<h2>
         </div>
         <h4><i>please complete your profile first</i></h4>
-        <form class="form-horizontal"action="{{route('user-pr.store')}}"role="form"
+        <form class="form-horizontal"action="{{route('user_profile.store')}}"role="form"
         enctype="multipart/form-data" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
@@ -39,10 +39,10 @@
                 <label for="no_hp">No Hp</label>
                 <input type="text" name="no_hp"id="no_hp"class="form-control"autofocus="true">
             </div>
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label for="upload_file">Upload CV</label>
                 <input type="file" name="file"id="file"class="form-control">
-            </div> --}}
+            </div>
             <div class="form-group">
                 <a href="{{route('user-home')}}"class="btn btn-primary">Back</a>
                 <input type="submit" name="save" id="save"class="btn btn-primary"value="Save">

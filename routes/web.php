@@ -12,25 +12,35 @@
 */
 
 Route::get('/','GuestController@index');
+Route::get('about','GuestController@About');
+Route::get('contact','GuestController@Contact');
+
 Auth::routes();
+
 Route::group(['middleware' => ['auth','role:admin,user']], function () {
      Route::get('/home','HomeController@index')->name('home');
  });
 Route::group(['middleware' => ['auth','role:admin']], function () { 
-    Route::get('admin-ds','Admin\AdminDashController@index')->name('admin-home');
-    Route::get('admin_update_status','Admin\AdminController@kelola')->name('admin-us');
-    Route::get('admin_update_status/{id}','Admin\AdminController@lihatProfile')->name('admin-user-profile');
-    Route::get('admin_update_job_status/{id}','Admin\AdminController@lihatStatus')->name('admin-job-status');
+    Route::get('admin_dashboard','Admin\AdminDashController@index')->name('admin-home');
+    Route::get('admin_kelola','Admin\AdminController@kelola')->name('admin-us');
+    Route::get('admin_user_profile/{id}','Admin\AdminController@lihatProfile')->name('admin-user-profile');
+    Route::get('admin_update_job_status','Admin\AdminController@lihatStatus')->name('admin-job-status');
+    Route::post('admin_update_job_status','Admin\AdminController@updateStatus')->name('admin-update-job-status');
     Route::resource('admin-jb','Admin\AdminJobController');
+    Route::resource('admin_user_list','Admin\AdminUserController');
 });
 Route::group(['middleware' => ['auth','role:user']], function () { 
-    Route::get('user-ds','User\UserDashController@index')->name('user-home');
-    Route::resource('user-pr','User\UserProfileController');
+    Route::get('user_dashboard','User\UserDashController@index')->name('user-home');
+    //route for user profile
+    Route::resource('user_profile','User\UserProfileController');
     //route for show job list to apply
-    Route::get('user-jb','User\UserController@listJob')->name('user-job');
-    Route::get('user-jb/{id}','User\UserController@toApply')->name('user-jb');
-    Route::post('user-jb/{id}','User\UserController@applyJob')->name('user-jba');
-    Route::get('user-jb/{id}','User\UserController@jobStatus')->name('user-jbs');
+    Route::get('user_job_list','User\UserController@listJob')->name('user-job');
+    //route for user show detail job to apply
+    Route::get('user_job_to_apply/{id}','User\UserController@toApply')->name('user-jb');
+    //route for user to apply job
+    Route::post('user_job_to_apply/{id}','User\UserController@applyJob')->name('user-jba');
+    //route for show job status
+    Route::get('user_job_status/{id}','User\UserController@jobStatus')->name('user-jbs');
 });
 
 

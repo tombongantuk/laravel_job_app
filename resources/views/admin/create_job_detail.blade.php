@@ -8,19 +8,27 @@
         <form class="form-horizontal"action="{{route('admin-jb.store')}}"method="post"role="form">
             {{ csrf_field() }}
             <div class="form-group">
-                <label for="title">Nama Pekerjaan</label>
-                <input type="text" class="form-control"name="job_name"id="job_name"autofocus="true">
+                <label for="company_name">Perusahann</label>
+                <input type="text" class="form-control"name="company_name"id="company_name"autofocus="true">
             </div>
             <div class="form-group">
-                <label for="title">Detail Pekerjaan</label>
+                <label for="company_address">Alamat Perusahaan</label>
+                <input type="text" class="form-control"name="company_address"id="company_address">
+            </div>
+            <div class="form-group">
+                <label for="job_name">Nama Pekerjaan</label>
+                <input type="text" class="form-control"name="job_name"id="job_name">
+            </div>
+            <div class="form-group">
+                <label for="details">Detail Pekerjaan</label>
                 <textarea class="form-control"name="details" id="details" cols="5" rows="5"></textarea>
             </div>
             <div class="form-group">
-                <label for="title">Syarat Pekerjaan</label>
+                <label for="requirement">Syarat Pekerjaan</label>
                 <textarea class="form-control"name="requirement" id="requirement" cols="5" rows="5"></textarea>
             </div>
             <div class="form-group">
-                <label for="title">Gaji</label>
+                <label for="salary">Gaji</label>
                 <input type="text" class="form-control"name="salary"id="salary"autofocus="true">
             </div>
             <div class="form-group">

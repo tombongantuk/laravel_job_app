@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCompanyAddressToJobs extends Migration
+class AddUserIdToFileCvs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCompanyAddressToJobs extends Migration
      */
     public function up()
     {
-        Schema::table('jobs', function($table) {
-            $table->text('company_address')->after('company_name');
+        Schema::table('file_cvs', function (Blueprint $table) {
+            $table->integer('user_id')->after('id')->unsigned();
         });
     }
 
@@ -25,8 +25,9 @@ class AddCompanyAddressToJobs extends Migration
      */
     public function down()
     {
-        Schema::table('jobs', function($table) {
-            $table->dropColumn('company_address');
+        
+        Schema::table('file_cvs', function($table) {
+            $table->dropColumn('user_id');
         });
     }
 }

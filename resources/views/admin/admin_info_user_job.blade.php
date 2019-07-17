@@ -1,4 +1,4 @@
-{{-- menu tab --}}
+{{-- menu tab
 <div class="container">
     <ul class="nav nav-pills"role="tablist">
         <li class="nav-item">
@@ -26,4 +26,4 @@
             <p>list</p>
         </div>
     </div>
-</div>
+</div> --}}

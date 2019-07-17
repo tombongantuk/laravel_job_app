@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\UserDetail;
-use Session;
+use App\FileCv;
+use Session,Storage;
 
 class UserProfileController extends Controller
 {
@@ -22,25 +23,25 @@ class UserProfileController extends Controller
         $detail=UserDetail::create($request->all());
         
         //store file cv user
-        // if($details){
-        //     //store file cv user
-        //     $user_id=$details->id;
-        //     $user_cv=new CV;
-        //     //if user choose a file then
-        //     if($request->hasFile('file')){
-        //         $file=$request->file('file');
-        //         $destination_path='uploads/';
-        //         $filename=str_random(6).'_'.$file->getClientOriginalName();
-        //         if(!$file->move($destination_path,$filename)){
-        //             return 'error moving file';
-        //         }
-        //         //if no error moving, then store
-        //         Storage::delete(public_path($user_cv->file));
-        //         $user_cv->user_id=$user_id;
-        //         $user_cv->file=$destination_path.$filename;
-        //         $user_cv->save();
-        //     } 
-        // }
+        if($detail){
+            //store file cv user
+            $user_id=$request->user_id;
+            $user_cv=new FileCv;
+            //if user choose a file then
+            if($request->hasFile('file')){
+                $file=$request->file('file');
+                $destination_path='uploads/';
+                $filename=$file->getClientOriginalName();
+                if(!$file->move($destination_path,$filename)){
+                    return 'error moving file';
+                }
+                //if no error moving, then store
+                Storage::delete(public_path($user_cv->file));
+                $user_cv->user_id=$user_id;
+                $user_cv->file=$destination_path.$filename;
+                $user_cv->save();
+            }   
+        }
        Session::flash('success','Your Profile success stored');
        return redirect()->route('user-home'); 
     }

@@ -7,7 +7,7 @@ use App\User;
 class Job extends Model
 {
     protected $fillable=[
-        'job_name','details','requirement','salary'
+        'company_name','company_address','job_name','details','requirement','salary'
     ];
 
     public function users(){

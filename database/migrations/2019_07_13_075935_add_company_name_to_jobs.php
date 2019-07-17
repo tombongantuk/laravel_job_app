@@ -14,7 +14,7 @@ class AddCompanyNameToJobs extends Migration
     public function up()
     {
         Schema::table('jobs', function($table) {
-            $table->text('company_name');
+            $table->text('company_name')->after('id');
         });
     }
 

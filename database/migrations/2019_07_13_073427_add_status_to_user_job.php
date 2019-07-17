@@ -14,7 +14,7 @@ class AddStatusToUserJob extends Migration
     public function up()
     {
          Schema::table('user_job', function($table) {
-            $table->integer('status')->after('job_id')->default('0');
+            $table->string('status')->after('job_id')->default('unread');
         });
     }
 

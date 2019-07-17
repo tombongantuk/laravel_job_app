@@ -3,6 +3,10 @@
 @section('title','User List')
  
 @section('content')
+<div class="container">
+    <h1>User Lists</h1>
+</div>
+<a href="{{route('admin-home')}}" class="btn btn-raised btn-primary">Back</a>
 <div class="table-responsive">
         <table class="table">
             <thead>
@@ -18,7 +22,6 @@
                     <td>{{$key+1}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td><a href="#" class="btn btn-raised btn-primary">#</a></td>
                     <br>
                 </tr>
                 @endforeach

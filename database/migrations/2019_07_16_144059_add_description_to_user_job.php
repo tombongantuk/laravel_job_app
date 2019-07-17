@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCompanyAddressToJobs extends Migration
+class AddDescriptionToUserJob extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCompanyAddressToJobs extends Migration
      */
     public function up()
     {
-        Schema::table('jobs', function($table) {
-            $table->text('company_address')->after('company_name');
+        Schema::table('user_job', function($table) {
+            $table->string('description')->after('status')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddCompanyAddressToJobs extends Migration
      */
     public function down()
     {
-        Schema::table('jobs', function($table) {
-            $table->dropColumn('company_address');
+        Schema::table('user_job', function($table) {
+            $table->dropColumn('description');
         });
     }
 }

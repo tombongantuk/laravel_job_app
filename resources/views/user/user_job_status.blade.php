@@ -4,12 +4,12 @@
 
 @section('content')
 <h1>Applied Job(s)</h1>
-<a href="#"class="btn btn-primary">Back</a><br>
+<a href="{{route('user-home')}}"class="btn btn-primary">Back</a><br>
 @foreach ($job_status as $status)
     {{$status->job_name}}<br>
-    @if(($status->pivot->status)===1)
+    @if(($status->pivot->status)==='accept')
        {!!'accepted'!!} <br>
-    @elseif(($status->pivot->status)===2)
+    @elseif(($status->pivot->status)==='reject')
         {!!'rejected'!!} <br>
     @else 
         {!!'on progress'!!} <br>

@@ -39,6 +39,9 @@ class User extends Authenticatable
     public function userDetail(){
         return $this->hasOne('App\UserDetail');
     }
+    public function fileCV(){
+        return $this->hasOne('App\FileCv');
+    }
 
     /** 
      * @param string|array $roles 
