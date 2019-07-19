@@ -9,12 +9,9 @@
         </div>
         <h4><i>please complete your profile first</i></h4>
         <form class="form-horizontal"action="{{route('user_profile.store')}}"role="form"
-        enctype="multipart/form-data" method="post">
+        enctype="multipart/form-data" method="POST">
             {{ csrf_field() }}
             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-            {{-- <input type="hidden" name="name" value="{{Auth::user()->name}}">
-            <input type="hidden" name="email" value="{{Auth::user()->email}}">
-            <input type="hidden" name="password" value="{{Auth::user()->password}}"> --}}
             <div class="form-group">
                 <label for="no_ktp">No KTP</label>
                 <input type="text" name="no_ktp"id="no_ktp"class="form-control"autofocus="true">
@@ -45,7 +42,7 @@
             </div>
             <div class="form-group">
                 <a href="{{route('user-home')}}"class="btn btn-primary">Back</a>
-                <input type="submit" name="save" id="save"class="btn btn-primary"value="Save">
+                <input type="submit"class="btn btn-primary"value="Save">
             </div>
         </form>
     </div>

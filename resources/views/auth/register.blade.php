@@ -38,19 +38,19 @@
                                 @endif
                             </div>
                         </div>
-                        {{-- <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Date of Birth(yyyy-mm-dd)</label>
+                        <div class="form-group{{ $errors->has('birth') ? ' has-error' : '' }}">
+                            <label for="birth" class="col-md-4 control-label">Date of Birth</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="birth" type="date" class="form-control" name="birth" required>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('birth'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('birth') }}</strong>
                                     </span>
                                 @endif
                             </div>
-                        </div> --}}
+                        </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>

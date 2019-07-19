@@ -21,7 +21,6 @@ class UserProfileController extends Controller
     public function store(Request $request){
         //store user profile
         $detail=UserDetail::create($request->all());
-        
         //store file cv user
         if($detail){
             //store file cv user
@@ -46,17 +45,35 @@ class UserProfileController extends Controller
        return redirect()->route('user-home'); 
     }
         
-    // public function show($id){
-    //     $user=User::findOrFail($id)->with('userprofile')->get();
-    //     return view('user.show_user_profile')->with('users',$user);
-    // }
+    public function show($id){
+         
+    }
 
     public function edit($id){
-        $user=User::findOrFail($id);
-        return view('user.user_edit_profile')->with('users',$user);
+        $user=User::with('userdetail')->findOrFail($id);
+        return view('user.user_edit_profile',compact('user'));
     }
-    public function update(){
-        //$user=User::findOrFail($id);
-        //Session::flash('success','Your Profile success updated');
+    public function update(Request $request,$id){
+        $user_cv=FileCv::where('user_id',$id)->first();
+        
+        if($request->hasFile('file')){
+            if (!empty($user_cv)) {
+                unlink($user_cv->file);
+            }
+            $file=$request->file('file');
+            $destination_path='uploads/';
+            $filename=$file->getClientOriginalName();
+            if(!$file->move($destination_path,$filename)){
+                return 'error moving file';
+            }         
+        }
+        //if no error moving, then store
+        $user_cv->user_id=$id;
+        $user_cv->file=$destination_path.$filename;
+        $user_cv->update();
+
+        $user_details=UserDetail::findOrFail($id)->update($request->all());               
+        Session::flash('success','Your Profile success updated');
+        return redirect()->route('user-home');
     }
 }

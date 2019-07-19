@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Role;
+use App\UserDetail;
 use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -56,6 +57,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'birth'=>'required|date|before:17 years ago'
         ]);
     }
 
@@ -70,9 +72,15 @@ class RegisterController extends Controller
         $user= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'birth'=> $data['birth'],
             'password' => bcrypt($data['password']),
         ]);
         $user->roles()->attach(Role::where('name','user')->first());
+    
+        //simpan birth ke user
+        // $user->birth=$data['birth'];
+        // $user->save();
         return $user;
+
     }
 }
