@@ -1,4 +1,4 @@
-@extends('master.master')
+@extends('master.user_dashboard')
 
 @section('title','User Profile')
 
@@ -15,18 +15,22 @@
             <div class="form-group">
                 <label for="no_ktp">No KTP</label>
                 <input type="text" name="no_ktp"id="no_ktp"class="form-control"autofocus="true">
+                <small class="error">{{$errors->first('no_ktp')}}</small>
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat</label>
                 <textarea class="form-control"name="alamat" id="alamat" cols="5" rows="5"></textarea>
+                <small class="error">{{$errors->first('alamat')}}</small>
             </div>
             <div class="form-group">
                 <label for="pendidikan">Pendidikan</label>
                 <textarea class="form-control"name="pendidikan" id="pendidikan" cols="5" rows="5"></textarea>
+                <small class="error">{{$errors->first('pendidikan')}}</small>
             </div>
             <div class="form-group">
                 <label for="skill">Skill</label>
                 <textarea class="form-control"name="skill" id="skill" cols="5" rows="5"></textarea>
+                <small class="error">{{$errors->first('skill')}}</small>
             </div>
             <div class="form-group">
                 <label for="hobi">Hobi</label>
@@ -35,10 +39,12 @@
             <div class="form-group">
                 <label for="no_hp">No Hp</label>
                 <input type="text" name="no_hp"id="no_hp"class="form-control"autofocus="true">
+                <small class="error">{{$errors->first('no_hp')}}</small>
             </div>
             <div class="form-group">
                 <label for="upload_file">Upload CV</label>
                 <input type="file" name="file"id="file"class="form-control">
+                <small class="error">{{$errors->first('file')}}</small>
             </div>
             <div class="form-group">
                 <a href="{{route('user-home')}}"class="btn btn-primary">Back</a>

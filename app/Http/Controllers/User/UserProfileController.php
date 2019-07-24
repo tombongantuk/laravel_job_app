@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserProfileRequest;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\UserDetail;
@@ -18,7 +19,7 @@ class UserProfileController extends Controller
         return view('user.user_profile');
     }
 
-    public function store(Request $request){
+    public function store(UserProfileRequest $request){
         //store user profile
         $detail=UserDetail::create($request->all());
         //store file cv user

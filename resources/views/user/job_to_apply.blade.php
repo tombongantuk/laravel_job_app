@@ -1,4 +1,4 @@
-@extends('master.master')
+@extends('master.user_dashboard')
 
 @section('title','Apply Job')
     
@@ -35,16 +35,17 @@
             {{$job->salary}}
         </p>
     </div>
-    @if ($has_user)
-    <div class="form-group">
-        <a href="{{route('user-job')}}"class="btn btn-primary">Back</a>
-        <input type="button"class="btn btn-primary"value="Apply"disabled><br/>
-        <small><i>*)anda sudah melamar perkerjaan ini</i></small>
+    @if ($has_job)
+        <div class="form-group">
+            <a href="{{route('user-job')}}"class="btn btn-primary">Back</a>
+            <input type="button"class="btn btn-primary"value="Apply"disabled><br/>
+            <small><i>*)anda sudah melamar perkerjaan ini</i></small>
+        </div>    
     @else    
-    <div class="form-group">
-        <a href="{{route('user-job')}}"class="btn btn-primary">Back</a>
-        <input type="submit"class="btn btn-primary"value="Apply"onclick="return confirm=('confirm to apply?')">
-    </div>
+        <div class="form-group">
+            <a href="{{route('user-job')}}"class="btn btn-primary">Back</a>
+            <input type="submit"class="btn btn-primary"value="Apply"onclick="return confirm=('confirm to apply?')">
+        </div>
     @endif
 </form>
 @endsection

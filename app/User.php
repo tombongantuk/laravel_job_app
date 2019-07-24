@@ -33,7 +33,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
     public function jobs(){
-        return $this->belongsToMany('App\Job','user_job')->withPivot('status');
+        return $this->belongsToMany('App\Job','user_job')->withPivot('status','description');
     }
     public function userDetail(){
         return $this->hasOne('App\UserDetail');

@@ -17,7 +17,7 @@ class UserController extends Controller
         //$job_apply->users()->attach($user_apply);
         $user_apply->jobs()->attach($job_apply);
 
-        return redirect()->route('user-job');
+        return redirect()->back();
     }
     //function show list job
     public function listJob(){
@@ -28,8 +28,9 @@ class UserController extends Controller
     //function to apply job
     public function toApply(Request $request,$id){
         $job=Job::findOrFail($id);
-        $has_user=$job->users()->where('user_id',$request->user_id);
-        return view('user.job_to_apply',compact('job','has_user'));
+        $user=User::findOrFail(Auth::user()->id);
+        $has_job=$user->jobs()->where('job_id',$id)->exists();
+        return view('user.job_to_apply',compact('job','has_job'));
     }
     
     //function for user job status

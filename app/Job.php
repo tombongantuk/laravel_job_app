@@ -11,6 +11,6 @@ class Job extends Model
     ];
 
     public function users(){
-        return $this->belongsToMany('App\User','user_job')->withPivot('status');
+        return $this->belongsToMany('App\User','user_job')->withPivot('status','description');
     }
 }
