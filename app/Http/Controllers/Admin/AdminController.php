@@ -15,28 +15,27 @@ class AdminController extends Controller
     }
 
     //function kelola perkerjaan
-    public function kelola(){
-        $jobs=Job::with('users')->whereHas('users',function($q){
+    public function kelola(Request $request){
+        $jobs=Job::with('users')->findOrFail($request->job_id)->whereHas('users',function($q){
             $q->having('status','=','unread');})->orderBy('id')->get();
         //$jobs=Job::with('users')->get();
         // $user=new User;
         // $status=$user->jobs()->wherePivot('status','=','unread')->get();
         return view('admin.admin_user_job_status',compact('jobs'));
-        //return view('admin.admin_user_job_status',compact('jobs'));
+        //return view('admin.admin_update_status',compact('jobs'));
     }
 
     // //fucntion lihat status
-    // public function lihatStatus(Request $request){
-    //     $job=Job::findOrFail($request->job_id);
-    //     $user=User::findOrFail($request->user_id);
-    //     return view('admin.admin_update_status',compact('job','user'));
-
+    // public function lihatKelola(){
+    //     $jobs=Job::all();
+    //     return view('admin.admin_user_job_status',compact('jobs'));
     //}
 
     //function update status
     public function updateStatus(Request $request){
         $user_id=$request->user_id;
-        $job=Job::findOrFail($request->job_id); 
+        $job=Job::findOrFail($request->job_id);
+        dd($user_id,$job); 
         $job->users()->updateExistingPivot($user_id,['status'=>$request->status,'description'=>$request->description]);
         
         return redirect()->back();
