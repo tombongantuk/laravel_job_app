@@ -42,6 +42,6 @@
         </div>
     </form>
     <div class="row">
-    <a href="{{route('admin-us')}}">Back</a>
+    <a href="{{route('admin_us')}}">Back</a>
     </div> 
 @endsection

@@ -5,7 +5,7 @@
 @section('content')
     <h1>Job Detail</h1>
     <div class="container">
-        <form class="form-horizontal"action="{{route('admin-jb.store')}}"method="post"role="form">
+        <form class="form-horizontal"action="{{route('admin_jb.store')}}"method="post"role="form">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="company_name">Perusahann</label>
@@ -32,7 +32,7 @@
                 <input type="text" class="form-control"name="salary"id="salary"autofocus="true">
             </div>
             <div class="form-group">
-                <a href="{{route('admin-jb.index')}}"class="btn btn-primary">Back</a>
+                <a href="{{route('admin_jb.index')}}"class="btn btn-primary">Back</a>
                 <input type="submit" class="btn btn-primary"value="Save">
             </div>
         </form>

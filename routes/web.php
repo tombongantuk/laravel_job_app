@@ -22,11 +22,10 @@ Route::group(['middleware' => ['auth','role:admin,user']], function () {
  });
 Route::group(['middleware' => ['auth','role:admin']], function () { 
     Route::get('admin_dashboard','Admin\AdminDashController@index')->name('admin-home');
-    Route::get('admin_kelola','Admin\AdminController@kelola')->name('admin-us');
+    Route::get('admin_kelola_','Admin\AdminController@kelola')->name('admin_us');
+    Route::post('admin_kelola_','Admin\AdminController@updateStatus')->name('admin-update-job-status');
     Route::get('admin_user_profile/{id}','Admin\AdminController@lihatProfile')->name('admin-user-profile');
-    // Route::get('admin_update_job_status','Admin\AdminController@lihatStatus')->name('admin-job-status');
-    Route::post('admin_kelola','Admin\AdminController@updateStatus')->name('admin-update-job-status');
-    Route::resource('admin-jb','Admin\AdminJobController');
+    Route::resource('admin_jb','Admin\AdminJobController');
     Route::resource('admin_user_list','Admin\AdminUserController');
 });
 Route::group(['middleware' => ['auth','role:user']], function () { 

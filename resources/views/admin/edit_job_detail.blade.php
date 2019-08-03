@@ -4,7 +4,7 @@
 
 @section('content')    
     <div class="container">
-        <form class="form-horizontal"action="{{route('admin-jb.update',$job->id)}}"method="post"role="form">
+        <form class="form-horizontal"action="{{route('admin_jb.update',$job->id)}}"method="post"role="form">
             {{ csrf_field() }}
             {{method_field('PATCH')}}
             <div class="form-group">
@@ -32,7 +32,7 @@
                 <input type="text" class="form-control"name="salary"id="salary"autofocus="true"value="{{$job->salary}}">
             </div>
             <div class="form-group">
-                <a href="{{route('admin-jb.index')}}"class="btn btn-primary">Back</a>
+                <a href="{{route('admin_jb.index')}}"class="btn btn-primary">Back</a>
                 <input type="submit" class="btn btn-primary"value="Save">
             </div>
         </form>

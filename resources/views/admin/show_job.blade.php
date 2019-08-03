@@ -23,6 +23,6 @@
     </p>
 </div>
 <div class="form-group">
-    <a href="{{route('admin-jb.index')}}"class="btn btn-primary">Back</a>
+    <a href="{{route('admin_jb.index')}}"class="btn btn-primary">Back</a>
 </div>
 @endsection

@@ -12,17 +12,7 @@
         </i>
     </p>
     <hr/>
-    <a href="{{route('admin-jb.index')}}"class="btn btn-primary">Kelola Pekerjaan</a>
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button"data-toggle="dropdown">
-            Kelola Pekerjaan<span class="caret"></span>
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-    </div>    
-    <a href="{{route('admin-us')}}"class="btn btn-primary">Kelola Lamaran</a>
+    <a href="{{route('admin_jb.index')}}"class="btn btn-primary">Kelola Pekerjaan</a>
+    <a href="{{route('admin_us')}}"class="btn btn-primary">Kelola Lamaran</a>
     <a href="{{route('admin_user_list.index')}}"class="btn btn-primary">Kelola User</a>    
 @endsection

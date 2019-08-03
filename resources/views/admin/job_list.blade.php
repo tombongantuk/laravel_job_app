@@ -7,6 +7,6 @@
         <small>{!!$job->company_name!!}</small>
     </div>
     <div class="container">
-            <a href="{{route('admin-jb.edit',$job->id)}}"class>Edit</a><hr/>
+            <a href="{{route('admin_jb.edit',$job->id)}}"class>Edit</a><hr/>
     </div>
 @endforeach  
