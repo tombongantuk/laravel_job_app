@@ -12,7 +12,24 @@
         </i>
     </p>
     <hr/>
-    <a href="{{route('admin_jb.index')}}"class="btn btn-primary">Kelola Pekerjaan</a>
-    <a href="{{route('admin_us')}}"class="btn btn-primary">Kelola Lamaran</a>
-    <a href="{{route('admin_user_list.index')}}"class="btn btn-primary">Kelola User</a>    
+    <a href="{{route('admin_jb.index')}}"class="btn btn-primary">Kelola Pekerjaan</a><br/>
+    <small>
+        <i>*)kelola pekerjaan untuk dilamar</i>
+    </small>
+    <br/><br/>
+    <a href="{{route('admin_status')}}"class="btn btn-primary">Status Lamaran</a><br/>
+    <small>
+        <i>*)list status lamaran user</i>
+    </small>
+    <br/><br/>
+    <a href="{{route('admin_us')}}"class="btn btn-primary">Kelola Lamaran</a><br/>
+    <small>
+        <i>*)kelola lamaran untuk mengubah status pelamar</i>
+    </small>
+    <br/><br/>
+    <a href="{{route('admin_user_list.index')}}"class="btn btn-primary">User</a><br/>
+    <small>
+        <i>*)list user yang mendaftar</i>
+    </small>
+    <br/><br/>    
 @endsection

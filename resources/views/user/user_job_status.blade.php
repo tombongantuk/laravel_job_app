@@ -3,8 +3,8 @@
 @section('title','Job Status')
 
 @section('content')
-<h1>Applied Job(s)</h1>
-<a href="{{route('user-home')}}"class="btn btn-primary">Back</a><br/>
+<h1>Applied Job(s)</h1><br/>
+<a href="{{route('user-home')}}"class="btn btn-primary">Back</a><br/><br/><hr/>
 @foreach ($job_status as $status)
     <label for="company_name"><strong>Nama Perusahaan: </strong></label>
     {{$status->company_name}}<br>
@@ -12,13 +12,13 @@
     {{$status->job_name}}<br>
     @if(($status->pivot->status)==='accept')
         <label for="status"><strong>Status: </strong></label>
-        {!!'accepted'!!} <br/><br/>
+        {!!'accepted'!!} <br/><hr/>
     @elseif(($status->pivot->status)==='reject')
         <label for="status"><strong>Status: </strong></label>
-        {!!'rejected'!!} <br/><br/>
+        {!!'rejected'!!} <br/><hr/>
     @else
         <label for="status"><strong>Status: </strong></label> 
-        {!!'on progress'!!} <br/><br/>
+        {!!'on progress'!!} <br/><hr/>
     @endif
 @endforeach
 @endsection

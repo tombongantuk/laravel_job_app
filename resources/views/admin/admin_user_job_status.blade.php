@@ -1,4 +1,4 @@
-@extends('master.master')
+@extends('master.admin_dashboard')
 
 @section('title','Update Status')
 
@@ -16,26 +16,27 @@
         <div class="container">
             @foreach ($job->users as $user)
                 @if ($user->pivot->status==='unread')
-                
-                    <div class="form-group">
-                        <small><span><strong>Nama Pelamar: </strong></span>{{$user->name}}</small>    
-                    
-                        <small><span><strong>Status: </strong></span>{{$user->pivot->status}}</small>
-                    
-                        <small><span><strong>User_id: </strong></span>{{$user->pivot->user_id}}</small>
-                    
-                        <input type="hidden"name="user_id"value="{{$user->pivot->user_id}}"readonly>
-                    
-                        <small><span><strong>Ubah jadi: </strong></small>    
-                        <input type="text"name="status"id="status"placeholder="accept/reject">
-                    
-                        <small><span><strong>Ket: </strong></small>
-                        <input type="text"name="description"id="description"><br/> 
+                    <form>
+                        <div class="form-group">
+                            <small><span><strong>Nama Pelamar: </strong></span>{{$user->name}}</small>    
+                        
+                            <small><span><strong><br/>Status: </strong></span>{{$user->pivot->status}}</small>
+                        
+                            <small><span><strong><br/>User_id: </strong></span>{{$user->pivot->user_id}}</small>
+                        
+                            <input type="hidden"class="form-control"name="user_id"value="{{$user->pivot->user_id}}"readonly>
+                        
+                            <small><span><strong><br/>Ubah jadi: </strong></small>    
+                            <input type="text"name="status"id="status"placeholder="accept/reject">
+                        
+                            <small><span><strong>Ket: </strong></small>
+                            <input type="text"name="description"id="description"><br/><br/> 
+                            
+                        </div>
                         <input type="submit"class="btn btn-primary"value="Change">
                         <a href="{{route('admin-user-profile',$user->pivot->user_id)}}"class="btn btn-outline-info">Profile</a> 
                         <hr/>
-                    </div> 
-                
+                    </form>   
                 @endif
             @endforeach
         </div>

@@ -14,6 +14,12 @@ class AdminController extends Controller
         return view('admin.admin')->with('role','admin');
     }
 
+    //function untuk melihat daftar status lamaran user
+    public function daftarStatus(){
+        $jobs=Job::with('users')->get();
+        return view('admin.admin_info_user_job',compact('jobs'));
+    }
+
     //function kelola perkerjaan
     public function kelola(){
         $jobs=Job::with('users')->whereHas('users',function($q){

@@ -1,29 +1,26 @@
-{{-- menu tab
+@extends('master.admin_dashboard')
+
+@section('title','Info status')
+ 
+@section('content')
+<h3>List Status Lamaran User</h3><br/>
+<a href="{{route('admin-home')}}"class="btn btn-primary">Back</a><br/><hr/>
 <div class="container">
-    <ul class="nav nav-pills"role="tablist">
-        <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#home">Unread</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#menu1">Accepted</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#menu2">Rejected</a>
-        </li>
-    </ul>
-{{-- isi dari menu tab --}}
-    <div class="tab-content">
-        <div id="home" class="container tab-pane active"><br>
-            <h3>Unread status</h3>
-            <p>list</p>
-        </div>
-        <div id="menu1" class="container tab-pane fade"><br>
-            <h3>Accepted status</h3>
-            <p>list</p>
-        </div>
-        <div id="menu2" class="container tab-pane fade"><br>
-            <h3>Rejected status</h3>
-            <p>list</p>
-        </div>
-    </div>
-</div> --}}
+    <form class="form-horizontal">
+        @foreach ($jobs as $job)
+            <h4><i>#{{$job->job_name}}</i></h4>
+            <div class="container">
+                <br/>
+            @foreach ($job->users as $user)
+            
+                <small><span><strong>Nama Pelamar: </strong></span>{{$user->name}}</small><br/>
+                <small><span><strong>Status: </strong></span>{{$user->pivot->status}}</small><br/>
+                <small><span><strong>Ket: </strong></span>{{$user->pivot->description}}</small><br/>
+                <hr/>
+            @endforeach
+            <br/>
+            </div>
+        @endforeach
+    </form>
+</div>    
+@endsection
